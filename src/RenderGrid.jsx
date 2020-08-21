@@ -1,12 +1,7 @@
 import React from 'react';
 import './App.css';
-import { render } from '@testing-library/react';
 
 class RenderGrid extends React.Component {
-    constructor(props){
-        super(props);
-    }
-
     componentDidMount(){
         this.createGrid();
         this.setMines();
@@ -37,7 +32,7 @@ class RenderGrid extends React.Component {
         var cell = e.currentTarget;
         var row = cell.parentNode.rowIndex;
         var col = cell.cellIndex;
-        if(cell.className == 'mines') {
+        if(cell.className === 'mines') {
             this.showAllMines();
             alert("Game Over!! Please refresh to start a New Game");
             document.getElementById('game-end-overlay').style.display = 'block';
@@ -54,7 +49,7 @@ class RenderGrid extends React.Component {
                 var col_val = closeby_cell_indexes[i][1];
                 if(row_val >= 0 && row_val < this.props.m && col_val >= 0 && col_val < this.props.n){
                     var cell_elem =  document.getElementById('table-grid').rows[row_val].cells[col_val];
-                    if(cell_elem.className == 'mines'){
+                    if(cell_elem.className === 'mines'){
                         count++;
                     }
                 }
